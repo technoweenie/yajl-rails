@@ -1,0 +1,11 @@
+= YAJL Plugin for Rails
+
+This plugin implements a quick JSON backend using the YAJL streaming parser and the
+yajl-ruby gem.
+
+http://lloydforge.org/projects/yajl
+http://github.com/brianmario/yajl-ruby
+
+This implementation will read streams in ActiveSupport::JSON#encode, or convert
+strings to a StringIO.  Also, check out the yajl-ruby gem for finer control over
+your JSON parsing.
