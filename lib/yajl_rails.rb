@@ -1,18 +1,14 @@
+require 'yajl'
 require 'stringio'
 
-module ActiveSupport::JSON
-  ParseError = Yajl::ParseError
-end
-  
 module YajlRails
   extend self
 
+  ParseError = Yajl::ParseError
+
   # Converts a JSON string into a Ruby object.
   def decode(json)
-    if !json.respond_to?(:read)
-      json = StringIO.new(json)
-    end
-    data = ::Yajl::Stream.parse(json)
+    data = Yajl::Parser.parse(json)
     if ActiveSupport.parse_json_times
       convert_dates_from(data)
     else
